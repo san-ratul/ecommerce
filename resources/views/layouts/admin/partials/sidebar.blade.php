@@ -1,0 +1,56 @@
+<aside>
+    <div id="sidebar" class="nav-collapse ">
+        <!-- sidebar menu start-->
+        <ul class="sidebar-menu" id="nav-accordion">
+
+            <p class="centered">
+                <a href="#">
+                    <i class="fa fa-user-circle img-circle" aria-hidden="true" style="font-size:60px"></i>
+                </a>
+            </p>
+            <h5 class="centered">{{Auth::user()->name ?? 'Guest'}}</h5>
+            <li class="mt">
+                <a href="{{route('admin.home')}}">
+                    <i class="fa fa-dashboard"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+
+            <li class="sub-menu">
+                <a href="javascript:;">
+                    <i class="fa fa-tasks"></i>
+                    <span>Seller Management</span>
+                </a>
+                <ul class="sub">
+                    <li><a href="{{route('seller.requests')}}">Seller Requests</a></li>
+                    <li><a href="{{route('seller.approvedSellers')}}">Approved Sellers</a></li>
+                </ul>
+            </li>
+
+            <li class="sub-menu">
+                <a href="javascript:;">
+                    <i class="fa fa-tasks"></i>
+                    <span>Shop Management</span>
+                </a>
+                <ul class="sub">
+                    <li><a href="{{route('shop.requests')}}">Shop Requests</a></li>
+                    <li><a href="{{route('shop.approvedShops')}}">Approved Shops</a></li>
+                </ul>
+            </li>
+
+            <li class="sub-menu">
+                <a href="javascript:;">
+                    <i class="fa fa-tasks"></i>
+                    <span>Forms</span>
+                </a>
+                <ul class="sub">
+                    <li><a href="form_component.html">Form Components</a></li>
+                    <li><a href="advanced_form_components.html">Advanced Components</a></li>
+                    <li><a href="form_validation.html">Form Validation</a></li>
+                    <li><a href="contactform.html">Contact Form</a></li>
+                </ul>
+            </li>
+        </ul>
+        <!-- sidebar menu end-->
+    </div>
+</aside>

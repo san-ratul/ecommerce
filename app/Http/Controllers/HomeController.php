@@ -1,0 +1,42 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class HomeController extends Controller
+{
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function index()
+    {
+        return view('admin.home');
+    }
+
+    public function userIndex()
+    {
+        return view('users.home');
+    }
+    public function sellerIndex()
+    {
+        return view('sellers.home');
+    }
+
+    public function notApprovedSeller()
+    {
+        return view('auth.notApproved');
+    }
+}

@@ -7,6 +7,7 @@ use App\Product;
 use App\ProductDetail;
 use App\ProductImage;
 use App\Shop;
+use App\Brand;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
@@ -15,6 +16,7 @@ class ProductController extends Controller
 {
     public function all()
     {
+       
         $products = DB::table('products')
             ->join('shops', 'shops.id', '=', 'products.shop_id')
             ->join('users', 'users.id', '=', 'shops.user_id')
@@ -26,12 +28,14 @@ class ProductController extends Controller
 
     public function addProduct()
     {
+        $brands=Brand::all();
         $categories = Category::all();
-        return view('shop.product.create', compact('categories'));
+        return view('shop.product.create', compact('categories','brands'));
     }
 
     public function storeProduct(Request $request)
     {
+
         $this->validate($request, [
             'name' => ['required', 'string'],
             'company_name' => ['required', 'string'],
@@ -45,6 +49,7 @@ class ProductController extends Controller
             'color' => ['string', 'max:255'],
             'size' => ['string', 'max:255'],
             'model' => ['string', 'max:255'],
+            'brand' => ['string', 'max:255'],
         ]);
         $product = Product::create([
             'name' => $request['name'],
@@ -54,6 +59,7 @@ class ProductController extends Controller
             'price' => $request['price'],
             'description' => $request['description'],
             'shop_id' => $request['shop_id'],
+            'brand_id'=>$request->brand,
 
         ]);
         $productDetails = ProductDetail::create([
@@ -172,5 +178,21 @@ class ProductController extends Controller
         }
 
         return redirect()->route('product.all')->with('success','Product Update successfully!');
+    }
+    public function productDetails(Product $product){
+        $categories=Category::all();
+        $brands=Brand::orderBy('created_at', 'desc')->take(6)->get();
+      return view('layouts.productDetials',compact('product','products','product_images','categories','brands','product_detials','categories'));
+    }
+    public function shop(){
+        $products=Product::all();
+        $categories=Category::all();
+        $brands=Brand::orderBy('created_at', 'desc')->take(15)->get();
+      return view('layouts.shop',compact('product','products','product_images','categories','brands','product_detials','categories'));
+    }
+    public function categorywiseProduct(Category $category){
+        $categories=Category::all();
+        $brands=Brand::all();
+      return view('layouts.categorywiseProduct',compact('category','categories','brands'));
     }
 }

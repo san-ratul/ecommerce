@@ -37,6 +37,15 @@
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-desktop"></i>
+              <span>Brand</span>
+              </a>
+            <ul class="sub">
+              <li><a href="{{route('add.band')}}">All Brand</a></li>
+            </ul>
+          </li>
+          <li class="sub-menu">
+            <a href="javascript:;">
+              <i class="fa fa-desktop"></i>
               <span>Product</span>
               </a>
             <ul class="sub">

@@ -15,6 +15,15 @@
                     <span>Dashboard</span>
                 </a>
             </li>
+            <li class="sub-menu">
+                <a href="javascript:;">
+                    <i class="fa fa-tasks"></i>
+                    <span>Slider Management</span>
+                </a>
+                <ul class="sub">
+                    <li><a href="{{route('add.slider')}}">Slider</a></li>
+                </ul>
+            </li>
 
             <li class="sub-menu">
                 <a href="javascript:;">

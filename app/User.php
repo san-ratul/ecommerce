@@ -1,7 +1,6 @@
 <?php
 
 namespace App;
-
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -40,5 +39,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function shops()
     {
         return $this->hasMany(Shop::Class,'user_id');
+    }
+  
+    public function sellerDetials()
+    {
+        return $this->hasOne(SellerDetail::Class,'user_id');
     }
 }

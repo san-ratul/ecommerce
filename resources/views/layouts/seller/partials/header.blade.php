@@ -3,7 +3,7 @@
       <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
     </div>
     <!--logo start-->
-    <a href="index.html" class="logo">{{ config('app.name', 'Laravel') }}</a>
+    <a href="{{url('/')}}" class="logo">{{ config('app.name', 'Laravel') }}</a>
     <!--logo end-->
     <div class="top-menu  mt-3">
       <ul class="nav pull-right top-menu">
@@ -11,7 +11,7 @@
             <a class="logout" href="{{ route('logout') }}"
             onclick="event.preventDefault();
                           document.getElementById('logout-form').submit();">
-             {{ __('Logout') }}</a>
+             {{ __('Logout') }}</a> || <a href="{{route('seller.profile',auth()->user()->id)}}" class="btn btn-success" style="color:white">{{"My Profile"}}</a>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                 @csrf
             </form>

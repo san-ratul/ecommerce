@@ -34,6 +34,20 @@
                     @enderror
                 </div>
                 <div class="form-group">
+                    <label for="brand" class="form-control-label">Proudct Brand Name</label>
+                    <select name="brand" id="brand" class="form-control">
+                        <option value="">Please select Brand</option>
+                        @foreach($brands as $brand)
+                        <option value="{{$brand->id}}">{{$brand->name}}</option>
+                        @endforeach
+                    </select>
+                    @error('brand')
+                    <span class="invalid-feedback text-danger" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+                <div class="form-group">
                     <label for="">Product Name</label>
                     <input type="name" class="form-control" name="name" placeholder="enter the product name"
                         value="{{ old('name') }}">
@@ -137,7 +151,6 @@
                     <strong>{{ $message }}</strong>
                 </span>
                 @enderror
-
                 <div class="form-group">
                     <label for="description">Description</label>
                     <textarea type="text" class="form-control" name="description" col="3" row="80">{{old('description')}}</textarea>

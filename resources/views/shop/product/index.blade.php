@@ -8,13 +8,14 @@
 
 @section('content')
 <div class="container-fluid">
-    <div class="bg-white" min-height="100%" style="padding-top:20px; border: 1px solid #9d9d9d;">
+    <div class="bg-white" min-height="100%" style="padding-top:20px; >
         <div class="card-body">
             <table class="table table-bordered datatable">
                 <thead>
                     <tr>
                         <th scope="col">ID</th>
                         <th scope="col">Product Name</th>
+                        <th scope="col"> Brand</th>
                         <th scope="col">Company</th>
                         <th scope="col">Category</th>
                         <th scope="col">Price</th>
@@ -33,6 +34,7 @@
                     <tr>
                         <td>{{ $p->id}}</td>
                         <td>{{ $p->name}}</td>
+                        <td>{{ $p->brand->name}}</td>
                         <td>{{ $p->company_name}}</td>
                         <td>{{ $p->category->name}}</td>
                         <td>{{ $p->price}}</td>

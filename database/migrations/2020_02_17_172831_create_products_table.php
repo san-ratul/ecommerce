@@ -22,8 +22,10 @@ class CreateProductsTable extends Migration
             $table->text('description');
             $table->bigInteger('category_id')->unsigned();
             $table->bigInteger('shop_id')->unsigned();
+            $table->bigInteger('brand_id')->unsigned();
             $table->foreign('shop_id')->references('id')->on('shops')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('brand_id')->references('id')->on('brands')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

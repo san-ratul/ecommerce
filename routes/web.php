@@ -11,10 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+Route::get('/','HomeController@homepage');
+Route::get('/product-details/{product}','ProductController@productDetails')->name('product.details');
+Route::get('/shop/all-product','ProductController@shop')->name('shop');
+Route::get('/category/all-product/{category}','ProductController@categorywiseProduct')->name('category.product');
+Route::get('/brand/all-product/{brand}','BrandController@brandwiseProduct')->name('brand.product');
+Route::get('/search/search-product','HomeController@searchResult')->name('search.result');
 
 Auth::routes([
     'verify' => true
@@ -47,7 +49,11 @@ Route::middleware(['auth','verified'])->group(function () {
         Route::patch('/shop/product/update/{product}', 'ProductController@updateProduct')->name('product.update');
         Route::delete('/shop/product/delete/{product}', 'ProductController@deleteProduct')->name('product.delete');
         Route::delete('/shop/product/image/remove/{productImage}', 'ProductController@removeImageProduct')->name('productImage.delete');
-
+  
+        Route::get('seller/add-brand','BrandController@addBrand')->name('add.band');
+        Route::post('seller/store-brand/','BrandController@StoreBand')->name('brand.store');
+        Route::delete('brand/delete/{brand}','BrandController@delete')->name('brand.delete');
+        Route::get('seller/seller-profile/{user}','SellerController@sellerupdate')->name('seller.profile');
 
     });
 
@@ -65,6 +71,10 @@ Route::middleware(['auth','verified'])->group(function () {
 
         Route::post('/admin/shop-management/approve/{shop}','ShopController@approve')->name('shop.approve');
         Route::delete('/admin/shop-management/delete/{shop}','ShopController@delete')->name('shop.delete');
+
+        Route::get('admin/add-slider','SliderController@addSlider')->name('add.slider');
+        Route::post('admin/store-slider','SliderController@storeSlider')->name('slider.store');
+        Route::delete('admin/delete-slider/{slider}','SliderController@delete')->name('slider.delete');
     });
 
     Route::middleware(['User'])->group(function () {

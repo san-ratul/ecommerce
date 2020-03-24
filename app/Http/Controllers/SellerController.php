@@ -39,4 +39,7 @@ class SellerController extends Controller
     {
         return view('sellers.requestShop');
     }
+    public function sellerupdate(User $user){
+        return view('sellers.sellerProfile',compact('user'));
+    }
 }
